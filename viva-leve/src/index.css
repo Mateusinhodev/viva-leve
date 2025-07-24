@@ -5,11 +5,32 @@
     font-family: "Lato", sans-serif;
 }
 
+:root {
+  /* Cores Primárias */
+  --color-primary: #3B4554; /* Azul Escuro Suave */
+  --color-background: #F8FAFC; /* Fundo Geral */
+  --color-surface: #F1F5F9; /* Fundo de cards */
+  --color-surface-light: #E2E8F0; /* Variação mais clara de fundo */
+
+  /* Cores de Texto */
+  --color-text-primary: #3B4554;
+  --color-text-secondary: #64748B;
+
+  /* Cores Utilitárias */
+  --color-white: #FFFFFF;
+  --color-success: #10B981;
+  --color-error: #EF4444;
+}
+
 body {
-    background-color: #090e22;
-    display: flex;
+    background-color: var(--color-background);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    padding: 20px;
+    /* display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #FFF;
+    color: #FFF; */
 }

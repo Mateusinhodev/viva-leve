@@ -6,6 +6,7 @@ import ImcCalc from './components/ImcCalc'
 import ImcTable from './components/ImcTable'
 
 import './App.css'
+import Header from "./components/Header.jsx"
 
 function App() {
 
@@ -46,9 +47,10 @@ function App() {
 
   return (
     <>
-      <div className="container">
-        {/* <h1>Viva Leve</h1> */}
-        {!imc ? <ImcCalc calcImc={calcImc}/> : <ImcTable data={data} imc={imc} info={info} infoClass={infoClass} resetCalc={resetCalc}/>}
+      <div>
+        <Header/>
+        
+        {/* {!imc ? <ImcCalc calcImc={calcImc}/> : <ImcTable data={data} imc={imc} info={info} infoClass={infoClass} resetCalc={resetCalc}/>} */}
       </div>
     </>
   )
