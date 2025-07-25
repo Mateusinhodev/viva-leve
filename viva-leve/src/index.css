@@ -8,7 +8,7 @@
 :root {
   /* Cores Primárias */
   --color-primary: #3B4554; /* Azul Escuro Suave */
-  --color-background: #F8FAFC; /* Fundo Geral */
+  --color-background: #eaeaea; /* Fundo Geral */
   --color-surface: #F1F5F9; /* Fundo de cards */
   --color-surface-light: #E2E8F0; /* Variação mais clara de fundo */
 
@@ -33,4 +33,8 @@ body {
     align-items: center;
     min-height: 100vh;
     color: #FFF; */
+}
+
+.container {
+    margin: 0 8rem;
 }

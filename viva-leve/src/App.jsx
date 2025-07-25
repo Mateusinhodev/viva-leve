@@ -7,6 +7,7 @@ import ImcTable from './components/ImcTable'
 
 import './App.css'
 import Header from "./components/Header.jsx"
+import Home from "./pages/Home/index.jsx"
 
 function App() {
 
@@ -47,8 +48,9 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="container">
         <Header/>
+        <Home/>
         
         {/* {!imc ? <ImcCalc calcImc={calcImc}/> : <ImcTable data={data} imc={imc} info={info} infoClass={infoClass} resetCalc={resetCalc}/>} */}
       </div>
