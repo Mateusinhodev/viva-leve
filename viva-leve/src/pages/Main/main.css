@@ -1,21 +1,28 @@
 .main-container {
     display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
     height: 100vh;
-    margin-top: 1.5rem;
+    /* margin-top: 3rem; */
     /* background-color: #FFF; */
 }
 
-.calculadoras {
+.container-left, .container-rigth{
     width: 50%;
-    display: inline-block;
+    /* display: flex; */
     text-align: center;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
 }
 
-.profissionais {
-    width: 50%;
+/* Calculadoras */
+
+.calculadoras h2 {
+    font-size: 2rem;
 }
 
 .calculadoras-btn {
@@ -26,8 +33,133 @@
     width: 190px;
     height: 80px;
     margin: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-img {
-    width: 500px;
+.calculadoras-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* Minha Jornada */
+
+.jornada-container {
+  padding: 4rem 2rem;
+  color: #2b2b2b;
+}
+
+.jornada-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.jornada-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.jornada-content h3 {
+  font-size: 1.5rem;
+}
+
+.jornada-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.jornada-content ul {
+  padding-left: 1.5rem;
+}
+
+.jornada-content ul li {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  position: relative;
+  list-style: none;
+}
+
+.jornada-content ul li::before {
+  content: "✔";
+  color: #178b6c;
+  margin-right: 0.5rem;
+}
+
+.btn-download {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #FFF;
+  color: var(--color-text-primary);
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.btn-download:hover {
+  background-color: #F0F0F0;
+}
+
+/* Profissionais */
+
+.profissionais {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.profissionais-card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  max-width: 500px;
+  height: 600px;
+  margin: 0 auto;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.profissionais-card:hover {
+  transform: translateY(-5px);
+}
+
+.profissionais-card .card-title h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-primary);
+}
+
+.profissionais-card .card-img img {
+  width: 100%;
+  height: 380px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+}
+
+.profissionais-card .action a {
+  display: inline-block;
+  background-color: var(--color-background);
+  color: #2b2b2b;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.profissionais-card .action a:hover {
+  background-color: #F0F0F0;
 }
