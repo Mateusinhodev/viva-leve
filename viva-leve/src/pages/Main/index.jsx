@@ -15,18 +15,18 @@ export default function Main() {
                 </div>
                 <div class="jornada-content">
                     <h2>Minha Jornada</h2>
-    <p>Alguns lembretes simples para te ajudar a cuidar de você com leveza:</p>
+                    <p>Alguns lembretes simples para te ajudar a cuidar de você com leveza:</p>
 
-    <ul>
-      <li>Estabeleça metas reais e possíveis.</li>
-      <li>Pese-se no máximo 1 vez por semana.</li>
-      <li>Observe como você se sente (não só o peso).</li>
-      <li>Anote seus hábitos e pequenas vitórias.</li>
-      <li>Cuide da água, do sono e da respiração.</li>
-    </ul>
+                    <ul>
+                        <li>Estabeleça metas reais e possíveis.</li>
+                        <li>Pese-se no máximo 1 vez por semana.</li>
+                        <li>Observe como você se sente (não só o peso).</li>
+                        <li>Anote seus hábitos e pequenas vitórias.</li>
+                        <li>Cuide da água, do sono e da respiração.</li>
+                    </ul>
 
-    <p>Quer acompanhar seu progresso?</p>
-    <a href="/downloads/Diario_Viva_Leve.pdf" class="btn-download" download>Baixar Diário em PDF</a>
+                    <p>Quer acompanhar seu progresso?</p>
+                    <a href="/downloads/Diario_Viva_Leve.pdf" class="btn-download" download>Baixar Diário em PDF</a>
                 </div>
             </div>
             

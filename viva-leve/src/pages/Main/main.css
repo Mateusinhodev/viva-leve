@@ -21,24 +21,48 @@
 
 /* Calculadoras */
 
-.calculadoras h2 {
-    font-size: 2rem;
+.calculadoras {
+  text-align: center;
+  padding: 2rem 1rem;
 }
 
+.calculadoras h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+
+/* Container dos botões em grade 2x2 */
+.calculadoras-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Estilização aprimorada do botão */
 .calculadoras-btn {
-    background-color: #FFF;
-    color: var(--color-text-primary);
-    font-weight: bold;
-    border-radius: 8px;
-    width: 190px;
-    height: 80px;
-    margin: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: #ffffff;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  /* border: 2px solid var(--color-text-primary); */
+  border-radius: 12px;
+  width: 200px;
+  height: 80px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .calculadoras-btn:hover {
-    background-color: #f0f0f0;
+  background-color: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* Minha Jornada */
@@ -100,13 +124,15 @@
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* transition: background-color 0.3s ease, transform 0.2s ease; */
   width: fit-content;
   margin: 0 auto;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .btn-download:hover {
-  background-color: #F0F0F0;
+  background-color: #F5F5F5;
 }
 
 /* Profissionais */
@@ -162,4 +188,88 @@
 
 .profissionais-card .action a:hover {
   background-color: #F0F0F0;
+}
+
+/* RESPONSIVIDADE GERAL */
+@media (max-width: 1304px) {
+  .main-container {
+    flex-direction: column;
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .container-left, .container-rigth {
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .profissionais {
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .profissionais-card {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .calculadoras h2,
+  .jornada-content h2,
+  .profissionais-card .card-title h2 {
+    font-size: 1.6rem;
+  }
+
+  .calculadoras-btn {
+    width: 160px;
+    height: 70px;
+    font-size: 0.9rem;
+  }
+
+  .jornada-content {
+    padding: 2rem 1rem;
+  }
+
+  .jornada-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .jornada-content p,
+  .jornada-content ul li {
+    font-size: 1rem;
+  }
+
+  .btn-download {
+    font-size: 0.9rem;
+  }
+
+  .profissionais-card .card-img img {
+    height: 250px;
+  }
+
+  .profissionais-card {
+    padding: 1.5rem;
+  }
+
+  .profissionais-card .action a {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calculadoras-btn {
+    width: 140px;
+    height: 60px;
+    margin: 15px;
+    font-size: 0.85rem;
+  }
+
+  .jornada-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .profissionais-card .card-img img {
+    height: 200px;
+  }
 }
