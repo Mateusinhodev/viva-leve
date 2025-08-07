@@ -9,6 +9,7 @@ import './App.css'
 import Header from "./components/Header.jsx"
 import Home from "./pages/Home/index.jsx"
 import Main from "./pages/Main/index.jsx"
+import Artigo from "./pages/artigos/index.jsx"
 
 function App() {
 
@@ -53,7 +54,7 @@ function App() {
         <Header/>
         <Home/>
         <Main/>
-        
+        <Artigo/>
         {/* {!imc ? <ImcCalc calcImc={calcImc}/> : <ImcTable data={data} imc={imc} info={info} infoClass={infoClass} resetCalc={resetCalc}/>} */}
       </div>
     </>

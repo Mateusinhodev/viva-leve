@@ -12,10 +12,12 @@
 
 .container-left, .container-rigth{
     width: 50%;
-    /* display: flex; */
+    display: flex;
+    flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
+    /* margin: auto; */
     padding: 1rem;
 }
 
@@ -31,6 +33,7 @@
   font-weight: 700;
   color: var(--color-text-primary);
   margin-bottom: 2rem;
+  /* text-align: start; */
 }
 
 /* Container dos botões em grade 2x2 */

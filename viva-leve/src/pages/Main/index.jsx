@@ -1,4 +1,5 @@
 import imgMain from "../../assets/foto-doutora.jpg"
+import diarioPDF from "../../assets/Diario_Viva_Leve.pdf"
 
 import "./main.css"
 
@@ -26,7 +27,7 @@ export default function Main() {
                     </ul>
 
                     <p>Quer acompanhar seu progresso?</p>
-                    <a href="/downloads/Diario_Viva_Leve.pdf" class="btn-download" download>Baixar Diário em PDF</a>
+                    <a href={diarioPDF} class="btn-download" download>Baixar Diário em PDF</a>
                 </div>
             </div>
             
@@ -40,7 +41,7 @@ export default function Main() {
                             <img src={imgMain} alt="Imagem de doutora"/>
                         </div>
                         <div className="action">
-                            <a href="profissionais">Buscar profissionais de Sáude</a>
+                            <a href="https://www.doctoralia.com.br/pesquisa?q=Tratamento%20de%20obesidade&loc=&filters%5Bservices%5D%5B%5D=3731https://www.doctoralia.com.br/pesquisa?q=Tratamento+de+obesidade&loc=&filters%5Bservices%5D%5B%5D=3731&utm_source=meupesominhajornada_website&utm_medium=banner&utm_campaign=awareness_bookings">Buscar profissionais de Sáude</a>
                         </div>
                     </div>
                 </div>
