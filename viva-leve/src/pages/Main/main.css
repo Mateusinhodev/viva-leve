@@ -5,9 +5,7 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
-    height: 100vh;
-    /* margin-top: 3rem; */
-    /* background-color: #FFF; */
+    height: 120vh;
 }
 
 .container-left, .container-rigth{
