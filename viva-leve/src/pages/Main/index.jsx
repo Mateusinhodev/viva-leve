@@ -7,14 +7,14 @@ export default function Main() {
     return (
         <section className="main-container">
             <div className="container-left">
-                <div className="calculadoras">
+                <div className="calculadoras" id="calculadoras">
                     <h2 className="calculadoras-title">Calculadoras de Saúde</h2>
                     <button className="calculadoras-btn">IMC</button>
                     <button className="calculadoras-btn">TMB</button>
                     <button className="calculadoras-btn">Gasto Calórico Diário</button>
                     <button className="calculadoras-btn">Água Recomendada</button>
                 </div>
-                <div class="jornada-content">
+                <div className="jornada-content">
                     <h2>Minha Jornada</h2>
                     <p>Alguns lembretes simples para te ajudar a cuidar de você com leveza:</p>
 
@@ -27,7 +27,7 @@ export default function Main() {
                     </ul>
 
                     <p>Quer acompanhar seu progresso?</p>
-                    <a href={diarioPDF} class="btn-download" download>Baixar Diário em PDF</a>
+                    <a href={diarioPDF} className="btn-download" download>Baixar Diário em PDF</a>
                 </div>
             </div>
             

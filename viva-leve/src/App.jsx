@@ -9,7 +9,7 @@ import './App.css'
 import Header from "./components/Header.jsx"
 import Home from "./pages/Home/index.jsx"
 import Main from "./pages/Main/index.jsx"
-import Artigo from "./pages/artigos/index.jsx"
+import Artigo from "./pages/Artigos/index.jsx"
 
 function App() {
 

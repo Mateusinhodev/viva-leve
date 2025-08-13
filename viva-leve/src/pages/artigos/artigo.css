@@ -1,86 +1,30 @@
+/* Container principal */
 .artigo-container {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    /* justify-content: center; */
     align-items: center;
-    margin-top: 3rem;
+    text-align: center;
+    /* margin-top: 3rem; */
     width: 100%;
-    height: 100vh;
+    padding: 0 1rem;
 }
 
+.cards-container {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Títulos e textos */
 .artigos-title {
     font-size: 2.2rem;
     font-weight: 700;
-    color: var(--color-text-primary);
+    color: #222;
     margin-bottom: 0.5rem;
-}
-
-.artigos-subtitle {
-    margin: 1rem;
 }
 
 .artigos-txt {
     font-size: 1.1rem;
     line-height: 1.6;
     color: #444;
-}
-
-.cards-container {
-    display: flex;
-}
-
-.card-container {
-    padding-block: 1rem;
-}
-
-.card-content {
-    margin-inline: 1.75rem;
-    border-radius: 1.25rem;
-    overflow: hidden;
-}
-
-.card-image {
-    position: relative;
-    background: #FFF;
-    padding-bottom: 1.5rem;
-    margin-bottom: -.75rem;
-}
-
-.card-data {
-    background-color: #3b4554;
-    padding: 1.5rem 2rem;
-    border-radius: 1rem;
-    text-align: center;
-    position: relative;
-    z-index: 10;
-    color: #FFF;
-}
-
-.card-image img {
-    width: 180px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 5;
-}
-
-.card-name {
-    font-size: 24px;
-    color: #FFF;
-    margin-bottom: .75rem;
-}
-
-.card-description {
-    font-weight: 500;
-    margin-bottom: 1.75rem;
-}
-
-.card-button {
-    display: inline-block;
-    background-color: #FFF;
-    padding: .75rem 1.5rem;
-    border-radius: .25rem;
-    color: #3b4554;
-    font-weight: 600;
-    text-decoration: none;
+    margin-bottom: 2rem;
 }
