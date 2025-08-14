@@ -1,9 +1,7 @@
-import { data } from "./data/data.js"
-
 import { useState } from 'react'
 
-import ImcCalc from './components/ImcCalc'
-import ImcTable from './components/ImcTable'
+// import ImcCalc from './components/ImcCalc'
+// import ImcTable from './components/ImcTable'
 
 import './App.css'
 import Header from "./components/Header.jsx"
@@ -45,7 +43,6 @@ function App() {
     setImc("");
     setInfo("");
     setInfoClass("");
-
   }
 
   return (
@@ -55,7 +52,6 @@ function App() {
         <Home/>
         <Main/>
         <Artigo/>
-        {/* {!imc ? <ImcCalc calcImc={calcImc}/> : <ImcTable data={data} imc={imc} info={info} infoClass={infoClass} resetCalc={resetCalc}/>} */}
       </div>
     </>
   )
