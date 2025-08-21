@@ -3,9 +3,8 @@ import { useState } from "react";
 import {
   Button,
   Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
+  Tooltip,
+  Typography
 } from "@material-tailwind/react";
 
 import imgMain from "../../assets/foto-doutora.jpg"
@@ -67,9 +66,27 @@ export default function Main() {
                     <h2 className="calculadoras-title">Calculadoras de Saúde</h2>
                     {/* Calculadora IMC */}
 
-                    <Button onClick={() => handleOpen("md")} className="calculadoras-btn">
-                        IMC
-                    </Button>
+                    <Tooltip
+                        className="border border-blue-gray-50 bg-white px-4 py-3 shadow-xl shadow-black/10"
+                        content={
+                            <div className="w-80">
+                            <Typography color="black" className="font-medium">
+                                Índice de Massa Corporal (IMC)
+                            </Typography>
+                            <Typography
+                                variant="small"
+                                color="black"
+                                className="font-normal opacity-80"
+                            >
+                                O índice de massa corporal é uma medida internacional usada para calcular se uma pessoa está no peso ideal.
+                            </Typography>
+                            </div>
+                        }
+                    >
+                        <Button onClick={() => handleOpen("md")} className="calculadoras-btn">
+                            IMC
+                        </Button>   
+                    </Tooltip>
 
                     <Dialog
                         open={

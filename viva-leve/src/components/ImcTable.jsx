@@ -10,9 +10,9 @@ const ImcTable = ({data, imc, info, infoClass, resetCalc}) => {
             Seu Imc: <span className={infoClass}>{imc}</span>
         </p>
         <p id="imc-info">
-            Situação atual:
+            Situação atual:  <span className={infoClass}>{info}</span>
         </p>
-        <h3>Confira as Classificações: <span className={infoClass}>{info}</span></h3>
+        <h3>Confira as Classificações:</h3>
         <div id="imc-table">
             <div className="table-header">
                 <h4>IMC</h4>

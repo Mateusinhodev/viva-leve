@@ -32,13 +32,8 @@ body {
     line-height: 1.6;
     color: var(--color-text-primary);
     padding: 20px;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    color: #FFF; */
 }
 
-.container {
-    margin: 0 8rem;
-}
+/* .container {
+    margin: 0 15rem;
+} */

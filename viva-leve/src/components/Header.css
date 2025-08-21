@@ -11,12 +11,16 @@
     align-items: center;
 }
 
-/* .header-logo {
+.header-logo {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
-} */
+    /* font-size: 34px; */
+}
 
 .header-link {
     width: fit-content;

@@ -47,7 +47,7 @@ function App() {
 
   return (
     <>
-      <div className="container">
+      <div className='container'>
         <Header/>
         <Home/>
         <Main/>
