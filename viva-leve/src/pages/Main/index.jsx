@@ -14,12 +14,13 @@ import ImcTable from "../../components/ImcTable";
 import { data } from "../../data/data.js"
 
 import "./main.css"
+import TmbCalc from "../../components/TmbCalc.jsx";
 
 export default function Main() {
 
-    const [size, setSize] = React.useState(null);
- 
-    const handleOpen = (value) => setSize(value);
+    // const [size, setSize] = React.useState(null);
+    // const handleOpen = (value) => setSize(value);
+
     const [step, setStep] = useState("calc"); // 'calc' ou 'result'
 
 
@@ -59,13 +60,24 @@ export default function Main() {
         setStep("calc");
     }
 
+    const [openDialog, setOpenDialog] = useState(null); 
+    // valores: "imc", "tmb", null
+
+    const handleOpen = (type) => {
+        setOpenDialog(type);
+    };
+
+    const handleClose = () => {
+        setOpenDialog(null);
+    };
+
     return (
         <section className="main-container">
             <div className="container-left">
                 <div className="calculadoras" id="calculadoras">
                     <h2 className="calculadoras-title">Calculadoras de Saúde</h2>
-                    {/* Calculadora IMC */}
 
+                    {/* Calculadora IMC */}
                     <Tooltip
                         className="border border-blue-gray-50 bg-white px-4 py-3 shadow-xl shadow-black/10"
                         content={
@@ -83,22 +95,12 @@ export default function Main() {
                             </div>
                         }
                     >
-                        <Button onClick={() => handleOpen("md")} className="calculadoras-btn">
+                        <Button onClick={() => handleOpen("imc")} className="calculadoras-btn">
                             IMC
                         </Button>   
                     </Tooltip>
 
-                    <Dialog
-                        open={
-                        size === "xs" ||
-                        size === "sm" ||
-                        size === "md" ||
-                        size === "lg" ||
-                        size === "xl" ||
-                        size === "xxl"
-                        }
-                        size={size || "md"}
-                        handler={handleOpen}
+                    <Dialog open={openDialog === "imc"} size={"md"} handler={handleClose}
                     >
                         {step === "calc" ? (
                             <ImcCalc calcImc={calcImc} />
@@ -113,7 +115,35 @@ export default function Main() {
                         )}
                     </Dialog>
 
-                    <button className="calculadoras-btn">TMB</button>
+                    {/* Calculadora TMB */}
+                    <Tooltip
+                        className="border border-blue-gray-50 bg-white px-4 py-3 shadow-xl shadow-black/10"
+                        content={
+                            <div className="w-80">
+                            <Typography color="black" className="font-medium">
+                                Taxa Metabólica Basal (TMB)
+                            </Typography>
+                            <Typography
+                                variant="small"
+                                color="black"
+                                className="font-normal opacity-80"
+                            >
+                                A taxa metabólica basal é um cálculo usado para estimar a quantidade de energia que o corpo gasta para manter as funções vitais
+                            </Typography>
+                            </div>
+                        }
+                    >
+                        <Button onClick={() => handleOpen("tmb")} className="calculadoras-btn">
+                            TBM
+                        </Button>   
+                    </Tooltip>
+
+                    <Dialog open={openDialog === "tmb"} size={"md"} handler={handleClose}
+                    >
+                        <TmbCalc/>
+                    </Dialog>
+                    
+
                     <button className="calculadoras-btn">Gasto Calórico Diário</button>
                     <button className="calculadoras-btn">Água Recomendada</button>
                 </div>

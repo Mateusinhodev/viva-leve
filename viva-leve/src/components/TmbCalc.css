@@ -1,14 +1,16 @@
-#calc-container { 
+/* Container do formulário */
+#calc-container {
   max-width: 600px;
-  margin: 20px auto;
+  margin: 30px auto;
   padding: 30px;
   background: #ffffff;
   border-radius: 16px;
-  /* box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.12); */
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.12);
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Título */
 #calc-container h2 {
   margin-bottom: 25px;
   font-size: 1.8rem;
@@ -17,10 +19,22 @@
   letter-spacing: 1px;
 }
 
+/* Inputs */
 .form-inputs {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.form-inline {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Cada controle ocupa metade */
+.form-inline .form-control {
+  flex: 1;
 }
 
 .form-control {
@@ -37,7 +51,6 @@
   margin-bottom: 8px;
 }
 
-/* Inputs e selects com o mesmo estilo */
 .form-control input,
 .form-control select {
   width: 100%;
@@ -52,15 +65,16 @@
 
 .form-control input:focus,
 .form-control select:focus {
-  border-color: var(--color-primary);
+  border-color: var(--color-primary, #4f46e5);
   background-color: #fff;
-  /* box-shadow: 0px 0px 8px rgba(79, 70, 229, 0.3); */
+  box-shadow: 0px 0px 8px rgba(79, 70, 229, 0.2);
 }
 
+/* Área dos botões */
 .action-control {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 20px;
   gap: 10px;
 }
 
@@ -88,7 +102,7 @@
 
 /* Botão calcular */
 #calc-btn {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary, #4f46e5);
   color: #fff;
 }
 

@@ -14,6 +14,7 @@
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-normalize": "^13.0.1",
     "postcss-preset-env": "^10.2.4",
+    "rc-input-number": "^9.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
