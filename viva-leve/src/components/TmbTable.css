@@ -1,0 +1,127 @@
+#result-container { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 16px;
+    background: #fff;
+    text-align: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #2b2b2b;
+    font-weight: 600;
+}
+
+/* TMB */
+#tmb-number {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 0.6rem;
+}
+
+#tmb-info {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+#result-container h3 {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Tabela */
+#tmb-table {
+    margin: 1.8rem 0;
+    font-size: 0.95rem;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+
+.table-header, 
+.table-data {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    transition: background 0.3s ease;
+}
+
+.table-header {
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.table-header h4, 
+.table-data p {
+    flex: 1;
+    margin: 0;
+}
+
+.table-header h4:nth-child(2), 
+.table-data p:nth-child(2) {
+    max-width: 100px;
+    text-align: center;
+}
+
+.table-data {
+    background: #fafafa;
+    font-weight: 500;
+    color: #444;
+}
+
+.table-data:nth-child(even) {
+    background: #f1f5f9;
+}
+
+.table-data:hover {
+    background: #e2e8f0;
+}
+
+/* Botão Voltar */
+#back-btn {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+#back-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(0.9);
+}
+
+/* Cores de classificação
+.good   { color: #16a34a; font-weight: bold; }
+.low    { color: #eab308; font-weight: bold; }
+.medium { color: #f97316; font-weight: bold; }
+.high   { color: #dc2626; font-weight: bold; }
+.normal { color: #2563eb; font-weight: bold; } */
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .table-header, .table-data {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 4px;
+    }
+
+    .table-header h4, .table-data p {
+        margin: 2px 0;
+    }
+}

@@ -1,5 +1,5 @@
-import React from "react";
 import { useState } from "react";
+
 import {
   Button,
   Dialog,
@@ -11,19 +11,15 @@ import imgMain from "../../assets/foto-doutora.jpg"
 import diarioPDF from "../../assets/Diario_Viva_Leve.pdf"
 import ImcCalc from "../../components/ImcCalc";
 import ImcTable from "../../components/ImcTable";
+import TmbCalc from "../../components/TmbCalc.jsx";
+import TmbTable from "../../components/TmbTable.jsx";
 import { data } from "../../data/data.js"
 
 import "./main.css"
-import TmbCalc from "../../components/TmbCalc.jsx";
 
 export default function Main() {
 
-    // const [size, setSize] = React.useState(null);
-    // const handleOpen = (value) => setSize(value);
-
-    const [step, setStep] = useState("calc"); // 'calc' ou 'result'
-
-
+    // Calculadora IMC
     const [imc, setImc] = useState("");
     const [info, setInfo] = useState("");
     const [infoClass, setInfoClass] = useState("");
@@ -57,11 +53,89 @@ export default function Main() {
         setImc("");
         setInfo("");
         setInfoClass("");
+        setTmb("");
+        setGct("");
+        setCaloriasPerda("");
+        setCaloriasGanha("");
         setStep("calc");
     }
 
-    const [openDialog, setOpenDialog] = useState(null); 
-    // valores: "imc", "tmb", null
+    // Calculadora de Taxa Metábolica Basal
+
+    const [tmb, setTmb] = useState("");
+    const [gct, setGct] = useState("");
+    const [caloriasPerda, setCaloriasPerda] = useState("");
+    const [caloriasGanha, setCaloriasGanha] = useState("");
+
+    const calcTmb = (e, sexo, idade, weight, height, nivelFisico) => {
+        e.preventDefault();
+
+        // Validações dos dados inseridos
+        if(!idade || !weight || !height ) {
+            alert("É necessário que todos os dados sejam inseridos!");
+            return;
+        }
+
+        const weightFloat = +weight.replace(",",".");
+        const heightFloat = +height.replace(",",".");
+
+
+        // Cálculo da Taxa Metábólica Basal
+        let tmbResult = 0;
+
+        if(sexo === "masculino") {
+            tmbResult = (10 * weightFloat) + (6.25 * heightFloat) - (5 * idade) + 5;
+        } else if(sexo === "feminino") {
+            tmbResult = (10 * weightFloat) + (6.25 * heightFloat) - (5 * idade) - 161;
+        } else {
+            alert("É necessário que um sexo!");
+            return;
+        }
+
+        setTmb(tmbResult.toFixed(2)); // Resultado da Taxa Metabólica Basal
+
+        // GTC - Gasto Calórico Total (O quanto o corpo gasta por dia considerando a atividade fisica)
+        let gctResult = 0;
+
+        switch(nivelFisico) {
+            case "1":
+                gctResult = tmbResult * 1.2;
+                break;
+            case "2": 
+                gctResult = tmbResult * 1.375;
+                break;
+            case "3": 
+                gctResult = tmbResult * 1.55;
+                break;
+            case "4": 
+                gctResult = tmbResult * 1.725;
+                break;
+            case "5": 
+                gctResult = tmbResult * 1.9;
+                break;
+            default:
+                alert("Dados inválidos");
+                return;
+        }
+
+        setGct(gctResult.toFixed(2)); // Resultado do GTC
+
+        // Deficit Calórico (Para perder peso)
+
+        let deficitCalorico = (20/100) * gctResult;
+        setCaloriasPerda(gctResult - deficitCalorico);
+
+        // Superavit Calórico
+        let superavitCalorico = (20/100) * gctResult;
+        setCaloriasGanha(gctResult + superavitCalorico);
+        
+        setStep("result")
+    }
+
+    // MODAL
+    const [step, setStep] = useState("calc"); // 'calc' ou 'result'
+
+    const [openDialog, setOpenDialog] = useState(null); // valores: "imc", "tmb", null
 
     const handleOpen = (type) => {
         setOpenDialog(type);
@@ -140,7 +214,18 @@ export default function Main() {
 
                     <Dialog open={openDialog === "tmb"} size={"md"} handler={handleClose}
                     >
-                        <TmbCalc/>
+                        {step === "calc" ? (
+                            <TmbCalc calcTmb={calcTmb} />
+                        ) : (
+                            <TmbTable
+                            tmb={tmb}
+                            gct={gct}
+                            caloriasPerda={caloriasPerda}
+                            caloriasGanha={caloriasGanha}
+                            resetCalc={resetCalc}
+                            />
+                        )}
+                        {/* <TmbCalc calcTmb={calcTmb}/> */}
                     </Dialog>
                     
 
