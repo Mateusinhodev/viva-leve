@@ -13,9 +13,13 @@ import ImcCalc from "../../components/ImcCalc";
 import ImcTable from "../../components/ImcTable";
 import TmbCalc from "../../components/TmbCalc.jsx";
 import TmbTable from "../../components/TmbTable.jsx";
+import AguaCalc from "../../components/AguaCalc.jsx";
+
 import { data } from "../../data/data.js"
 
 import "./main.css"
+import AguaTable from "../../components/AguaTable.jsx";
+
 
 export default function Main() {
 
@@ -57,6 +61,8 @@ export default function Main() {
         setGct("");
         setCaloriasPerda("");
         setCaloriasGanha("");
+        setAguaMaxima("");
+        setAguaMinima("");
         setStep("calc");
     }
 
@@ -123,14 +129,34 @@ export default function Main() {
         // Deficit Calórico (Para perder peso)
 
         let deficitCalorico = (20/100) * gctResult;
-        setCaloriasPerda(gctResult - deficitCalorico);
+        setCaloriasPerda((gctResult - deficitCalorico).toFixed(2));
 
         // Superavit Calórico
         let superavitCalorico = (20/100) * gctResult;
-        setCaloriasGanha(gctResult + superavitCalorico);
+        setCaloriasGanha((gctResult + superavitCalorico).toFixed(2));
         
         setStep("result")
     }
+
+    // Calculadora Água Recomendada
+
+    const [aguaMinima, setAguaMinima] = useState("");
+    const [aguaMaxima, setAguaMaxima] = useState("");
+
+    const calcAgua = (e, weight) => {
+        e.preventDefault();
+        if(!weight) return;
+
+        const weightFloat = +weight.replace(",", ".");
+        const aguaMin = (weightFloat * 35) / 1000; // em litros
+        const aguaMax = (weightFloat * 40) / 1000;
+
+        setAguaMinima(aguaMin.toFixed(2))
+        setAguaMaxima(aguaMax.toFixed(2));
+
+        setStep("result")
+    };
+    
 
     // MODAL
     const [step, setStep] = useState("calc"); // 'calc' ou 'result'
@@ -174,7 +200,7 @@ export default function Main() {
                         </Button>   
                     </Tooltip>
 
-                    <Dialog open={openDialog === "imc"} size={"md"} handler={handleClose}
+                    <Dialog open={openDialog === "imc"} size={"md"} handler={handleClose} 
                     >
                         {step === "calc" ? (
                             <ImcCalc calcImc={calcImc} />
@@ -208,7 +234,7 @@ export default function Main() {
                         }
                     >
                         <Button onClick={() => handleOpen("tmb")} className="calculadoras-btn">
-                            TBM
+                            TMB
                         </Button>   
                     </Tooltip>
 
@@ -228,9 +254,45 @@ export default function Main() {
                         {/* <TmbCalc calcTmb={calcTmb}/> */}
                     </Dialog>
                     
+                    {/* Calculadora de Agua Recomendada */}
+                    <Tooltip
+                        className="border border-blue-gray-50 bg-white px-4 py-3 shadow-xl shadow-black/10"
+                        content={
+                            <div className="w-80">
+                            <Typography color="black" className="font-medium">
+                                Água Recomendada
+                            </Typography>
+                            <Typography
+                                variant="small"
+                                color="black"
+                                className="font-normal opacity-80"
+                            >
+                                A taxa metabólica basal é um cálculo usado para estimar a quantidade de energia que o corpo gasta para manter as funções vitais
+                            </Typography>
+                            </div>
+                        }
+                    >
+                        <Button onClick={() => handleOpen("agua")} className="calculadoras-btn">
+                            Água Recomendada
+                        </Button>   
+                    </Tooltip>
+                    
+                    <Dialog open={openDialog === "agua"} size={"md"} handler={handleClose}
+                    >
+                        {step === "calc" ? (
+                            <AguaCalc calcAgua={calcAgua}/>
+                        ) : (
+                            <AguaTable
+                            aguaMaxima={aguaMaxima}
+                            aguaMinima={aguaMinima}
+                            resetCalc={resetCalc}
+                            />
+                        )}
+                        {/* <AguaCalc calcAgua={calcAgua}/> */}
+                    </Dialog>
+
 
                     <button className="calculadoras-btn">Gasto Calórico Diário</button>
-                    <button className="calculadoras-btn">Água Recomendada</button>
                 </div>
                 <div className="jornada-content">
                     <h2>Minha Jornada</h2>

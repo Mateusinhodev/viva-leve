@@ -11,43 +11,9 @@ import Artigo from "./pages/Artigos/index.jsx"
 
 function App() {
 
-  const [imc, setImc] = useState("");
-  const [info, setInfo] = useState("");
-  const [infoClass, setInfoClass] = useState("");
-
-  const calcImc = (e, heigth, weigth) => {
-    e.preventDefault();
-        
-    if(!weigth || !heigth) return;
-
-    const weigthFloat = +weigth.replace(",", ".");
-    const heigthFloat = +heigth.replace(",", ".")
-
-    const imcResult = (weigthFloat / (heigthFloat * heigthFloat)).toFixed(1);
-
-    setImc(imcResult);
-
-    data.forEach((item) => {
-      if(imcResult >= item.min && imcResult <= item.max) {
-        setInfo(item.info);
-        setInfoClass(item.infoClass);
-      }
-    });
-
-    if(!info) return;
-  }
-
-  const resetCalc = (e) => {
-    e.preventDefault();
-
-    setImc("");
-    setInfo("");
-    setInfoClass("");
-  }
-
   return (
     <>
-      <div className='container'>
+      <div id='container'>
         <Header/>
         <Home/>
         <Main/>

@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const TmbCalc = ({calcTmb}) => {
 
-    // Estados que armazenará os dados do suário
+    // Estados que armazenará os dados do usuário
     const [sexo, setSexo] = useState("");
     const [idade, setIdade] = useState("");
     const [weight, setWeight] = useState("");
@@ -57,17 +57,17 @@ return (
             <div className="form-inputs">
                 <div className="form-inline">
                     <div className="form-control">
-                    <label htmlFor="sexo">Sexo:</label>
-                    <select id="sexo" name="sexo" onChange={handleSexoChange} value={sexo}>
-                        <option value="">Selecione...</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="feminino">Feminino</option>
-                    </select>
+                        <label htmlFor="sexo">Sexo:</label>
+                        <select id="sexo" name="sexo" onChange={handleSexoChange} value={sexo}>
+                            <option value="">Selecione...</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                        </select>
                     </div>
 
                     <div className="form-control">
-                    <label htmlFor="idade">Idade:</label>
-                    <input type="number" name="idade" id="idade" onChange={(e) => handleIdadeChange(e)} value={idade}/>
+                        <label htmlFor="idade">Idade:</label>
+                        <input type="number" name="idade" id="idade" onChange={(e) => handleIdadeChange(e)} value={idade}/>
                     </div>
                 </div>
 
