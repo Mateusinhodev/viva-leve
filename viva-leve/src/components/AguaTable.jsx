@@ -2,19 +2,15 @@ import "./AguaTable.css";
 import Button from "./Button";
 
 const AguaTable = ({ aguaMinima, aguaMaxima, resetCalc }) => {
-  const horarios = [
-    "Ao acordar",
-    "10h",
-    "12h",
-    "14h",
-    "16h",
-    "18h",
-    "20h",
-    "Antes de dormir",
+  // Definição dos turnos e quantas vezes a pessoa pode beber em cada
+  const turnos = [
+    { nome: "Manhã", horas: 4 }, // acordar até 12h
+    { nome: "Tarde", horas: 4 }, // 12h até 18h
+    { nome: "Noite", horas: 3 }, // 18h até antes de dormir
   ];
 
-  const porcaoMin = ((aguaMinima * 1000) / horarios.length).toFixed(0);
-  const porcaoMax = ((aguaMaxima * 1000) / horarios.length).toFixed(0);
+  // Total de "vezes" para dividir a água
+  const totalPartes = turnos.reduce((acc, t) => acc + t.horas, 0);
 
   return (
     <div id="result-container">
@@ -32,17 +28,24 @@ const AguaTable = ({ aguaMinima, aguaMaxima, resetCalc }) => {
       <h3>Distribuição sugerida ao longo do dia</h3>
       <div id="agua-table">
         <div className="table-header">
-          <h4>Horário</h4>
-          <h4>Quantidade</h4>
+          <h4>Turno</h4>
+          <h4>Intervalo</h4>
         </div>
-        {horarios.map((hora, index) => (
-          <div className="table-data" key={index}>
-            <p>{hora}</p>
-            <p>
-              {porcaoMin} ml – {porcaoMax} ml
-            </p>
-          </div>
-        ))}
+
+        {turnos.map((turno, index) => {
+          // Divide proporcionalmente ao número de "vezes"
+          const porcaoMin = ((aguaMinima * 1000 * turno.horas) / totalPartes).toFixed(0);
+          const porcaoMax = ((aguaMaxima * 1000 * turno.horas) / totalPartes).toFixed(0);
+
+          return (
+            <div className="table-data" key={index}>
+              <p>{turno.nome}</p>
+              <p>
+                {porcaoMin} ml – {porcaoMax} ml
+              </p>
+            </div>
+          );
+        })}
       </div>
 
       <p className="note">
