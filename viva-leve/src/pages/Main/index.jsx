@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 
 import {
   Button,
@@ -14,11 +14,13 @@ import ImcTable from "../../components/ImcTable";
 import TmbCalc from "../../components/TmbCalc.jsx";
 import TmbTable from "../../components/TmbTable.jsx";
 import AguaCalc from "../../components/AguaCalc.jsx";
+import AguaTable from "../../components/AguaTable.jsx";
+import LbmCalc from "../../components/LbmCalc.jsx";
+import LbmTable from "../../components/LbmTable.jsx";
 
 import { data } from "../../data/data.js"
 
 import "./main.css"
-import AguaTable from "../../components/AguaTable.jsx";
 
 
 export default function Main() {
@@ -156,6 +158,47 @@ export default function Main() {
 
         setStep("result")
     };
+
+    // Calculadora de Indice de Massa de Magra
+
+    const [weight, setWeight] = useState("");
+    const [massaMagra, setMassaMagra] = useState("");
+    const [massaGorda, setMassaGorda] = useState("");
+    const [percentoGordura, setPercentoGordura] = useState("");
+
+    const calcLbm = (e, sexo, weight, height) => {
+        e.preventDefault();
+
+        if(!weight || !height) return;
+
+        setWeight(weight);
+
+        const weightFloat = +weight.replace(",",".");
+        const heightFloat = +height.replace(",",".");
+
+        // Massa Magra
+        let lbm;
+
+        if(sexo === "masculino") {
+            lbm = (0.407 * weightFloat) + (0.267 * heightFloat) - 19.2;
+        } else {
+            lbm = (0.252 * weightFloat) + (0.473 * heightFloat) - 48.3;
+        } 
+
+        setMassaMagra(lbm.toFixed(2));
+
+        // Massa Gorda
+
+        let massaGorda = weightFloat - lbm;
+        setMassaGorda(massaGorda.toFixed(2));
+
+        // Percentual de Gordura
+
+        let percentoGordura = (massaGorda / weightFloat) * 100;
+        setPercentoGordura(percentoGordura.toFixed(2));
+
+        setStep("result");
+    }
     
 
     // MODAL
@@ -267,7 +310,7 @@ export default function Main() {
                                 color="black"
                                 className="font-normal opacity-80"
                             >
-                                A taxa metabólica basal é um cálculo usado para estimar a quantidade de energia que o corpo gasta para manter as funções vitais
+                                A calculadora de ingestão diária de água é uma maneira simples e rápida de determinar quantos litros de água uma pessoa pode consumir por dia com base em seu peso corporal.
                             </Typography>
                             </div>
                         }
@@ -291,8 +334,44 @@ export default function Main() {
                         {/* <AguaCalc calcAgua={calcAgua}/> */}
                     </Dialog>
 
+                    {/* Calculadora de Índice de Massa Magra */}
+                    <Tooltip
+                        className="border border-blue-gray-50 bg-white px-4 py-3 shadow-xl shadow-black/10"
+                        content={
+                            <div className="w-80">
+                            <Typography color="black" className="font-medium">
+                                índice de Massa Magra
+                            </Typography>
+                            <Typography
+                                variant="small"
+                                color="black"
+                                className="font-normal opacity-80"
+                            >
+                                O índice de massa magra (ou massa livre de gordura) representa a quantidade total de componentes do corpo que não são gordura, como músculos, ossos, órgãos e água.
+                            </Typography>
+                            </div>
+                        }
+                    >
+                        <Button onClick={() => handleOpen("lbm")} className="calculadoras-btn">
+                            índice de Massa Magra
+                        </Button>   
+                    </Tooltip>
 
-                    <button className="calculadoras-btn">Gasto Calórico Diário</button>
+                    <Dialog open={openDialog === "lbm"} size={"md"} handler={handleClose}
+                    >
+                        {step === "calc" ? (
+                            <LbmCalc calcLbm={calcLbm}/>
+                        ) : (
+                            <LbmTable
+                            weight={weight}
+                            massaMagra={massaMagra}
+                            massaGorda={massaGorda}
+                            percentoGordura={percentoGordura}
+                            resetCalc={resetCalc}
+                            />
+                        )}
+                    </Dialog>
+
                 </div>
                 <div className="jornada-content">
                     <h2>Minha Jornada</h2>

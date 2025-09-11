@@ -1,16 +1,18 @@
+/* Container principal */
 #result-container {
   max-width: 650px;
   margin: 0 auto;
   padding: 35px;
   background: #ffffff;
   border-radius: 18px;
-  /* box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08); */
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: transform 0.2s ease;
 }
 
+/* Título */
 #result-container h2 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-size: 2rem;
   font-weight: 700;
   color: #1a1a2e;
@@ -19,87 +21,60 @@
   padding-bottom: 5px;
 }
 
-#agua-number {
+/* Container dos números */
+#massa-numbers {
   display: flex;
   justify-content: space-evenly;
   gap: 25px;
-  margin: 10px 0;
+  margin: 20px 0;
   font-size: 1.15rem;
   flex-wrap: wrap;
 }
 
-#agua-number p {
+/* Cada linha do resultado */
+#massa-numbers p {
   font-weight: 600;
   color: #444;
   background: #f3f4f6;
-  padding: 12px 18px;
+  padding: 14px 20px;
   border-radius: 12px;
-  min-width: 120px;
+  min-width: 140px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#agua-number .highlight {
+/* Destaque dos valores */
+#massa-numbers .highlight {
   color: var(--color-primary);
   font-weight: 700;
+  margin-left: 5px;
 }
 
+/* Subtítulo de interpretação */
 #result-container h3 {
-  margin: 20px 0 10px;
+  margin: 25px 0 10px;
   font-size: 1.4rem;
   font-weight: 600;
   color: #1a1a2e;
   position: relative;
 }
 
-/* #result-container h3::after {
-  content: "";
-  width: 50px;
-  height: 3px;
-  background: var(--color-primary);
-  display: block;
-  margin: 8px auto 0;
-  border-radius: 3px;
-} */
-
-/* Estilo da tabela */
-.agua-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 25px 0;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
-
-.agua-table th {
-  background-color: var(--color-primary);
-  color: #fff;
-  padding: 14px;
-  text-transform: uppercase;
-  font-size: 0.95rem;
-  letter-spacing: 0.7px;
-}
-
-.agua-table td {
-  padding: 14px;
-  border-bottom: 1px solid #e5e7eb;
-  font-size: 1rem;
-  color: #333;
-}
-
-.agua-table tr:nth-child(even) {
-  background-color: #f9fafb;
-}
-
+/* Nota informativa */
 .note {
   font-size: 0.95rem;
   color: #6b7280;
   margin: 20px 0 30px;
   line-height: 1.5;
+  background: #f9fafb;
+  padding: 12px 16px;
+  border-radius: 12px;
+  text-align: left;
 }
 
 /* Botão voltar */
 #back-btn {
-  padding: 14px 20px;
+  padding: 14px 22px;
   border: none;
   border-radius: 12px;
   font-size: 1rem;
@@ -113,7 +88,7 @@
 
 #back-btn:hover {
   transform: scale(1.07);
-  background-color: #0f3460; /* tom mais escuro */
+  background-color: #0f3460;
   box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -123,19 +98,14 @@
     padding: 22px;
   }
 
-  #agua-number {
+  #massa-numbers {
     flex-direction: column;
     gap: 12px;
   }
 
-  #agua-number p {
+  #massa-numbers p {
     width: 100%;
     text-align: center;
-  }
-
-  .agua-table th,
-  .agua-table td {
-    font-size: 0.85rem;
-    padding: 10px;
+    justify-content: center;
   }
 }

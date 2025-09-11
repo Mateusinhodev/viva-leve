@@ -27,6 +27,7 @@ const TmbCalc = ({calcTmb}) => {
         return text.replace(/[^0-9,]/g, "")
     }
 
+    // Capturando valores
     const handleSexoChange = (e) => {
         setSexo(e.target.value);
     }
