@@ -5,7 +5,7 @@ export default function Header() {
         <div>
             <div className="header">
                 <h1 className="header-logo">Viva Leve</h1>
-                <a href="#start" className="header-link">Comece sua jornada</a>
+                <a href="#calculadoras" className="header-link">Comece sua jornada</a>
             </div>
         </div>
     )

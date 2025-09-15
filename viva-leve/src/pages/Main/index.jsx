@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import {useState} from "react";
 
 import {
   Button,
@@ -7,7 +7,6 @@ import {
   Typography
 } from "@material-tailwind/react";
 
-import imgMain from "../../assets/foto-doutora.jpg"
 import diarioPDF from "../../assets/Diario_Viva_Leve.pdf"
 import ImcCalc from "../../components/ImcCalc";
 import ImcTable from "../../components/ImcTable";
@@ -397,7 +396,7 @@ export default function Main() {
                             <h2>Encontre ajuda profissional</h2>
                         </div>
                         <div className="card-img">
-                            <img src={imgMain} alt="Imagem de doutora"/>
+                            <img src="https://imgur.com/ReDUX2B.jpeg" alt="Imagem de doutora"/>
                         </div>
                         <div className="action">
                             <a href="https://www.doctoralia.com.br/pesquisa?q=Tratamento%20de%20obesidade&loc=&filters%5Bservices%5D%5B%5D=3731https://www.doctoralia.com.br/pesquisa?q=Tratamento+de+obesidade&loc=&filters%5Bservices%5D%5B%5D=3731&utm_source=meupesominhajornada_website&utm_medium=banner&utm_campaign=awareness_bookings">Buscar profissionais de Sáude</a>
