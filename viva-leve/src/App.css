@@ -20,20 +20,34 @@
     text-decoration: none;
 }
 
+/* Responsividade para tablets */
 @media (max-width: 768px) {
-    .container {
+    #container {
+        margin: 0 1rem;
+    }
+
+    .header {
+        flex-direction: row; /* mantém em linha */
+        justify-content: space-between;
+    }
+
+    .header-link {
+        display: none; /* oculta no mobile */
+    }
+}
+
+/* Responsividade para smartphones */
+@media (max-width: 480px) {
+    #container {
         margin: 0 0.5rem;
     }
 
     .header {
-        /* flex-direction: column; */
+        flex-direction: column; /* header em coluna */
         gap: 1rem;
     }
 
-    .header a {
-        width: 130px;
-        text-align: center;
-        font-size: 12px;
+    .header-link {
+        display: none; /* garante que fica oculto */
     }
 }
-
