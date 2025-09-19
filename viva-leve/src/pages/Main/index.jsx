@@ -40,7 +40,7 @@ export default function Main() {
         const imcResult = (weigthFloat / (heigthFloat * heigthFloat)).toFixed(1);
 
         setImc(imcResult);
-        setStep("result");
+        setImcStep("result");
 
         data.forEach((item) => {
             if(imcResult >= item.min && imcResult <= item.max) {
@@ -52,20 +52,19 @@ export default function Main() {
         if(!info) return;
     }
     
-    const resetCalc = (e) => {
-        e.preventDefault();
+    const resetCalc = () => {
+        // IMC
+        setImc(""); setInfo(""); setInfoClass(""); setImcStep("calc");
 
-        setImc("");
-        setInfo("");
-        setInfoClass("");
-        setTmb("");
-        setGct("");
-        setCaloriasPerda("");
-        setCaloriasGanha("");
-        setAguaMaxima("");
-        setAguaMinima("");
-        setStep("calc");
-    }
+        // TMB
+        setTmb(""); setGct(""); setCaloriasPerda(""); setCaloriasGanha(""); setTmbStep("calc");
+
+        // Água
+        setAguaMinima(""); setAguaMaxima(""); setAguaStep("calc");
+
+        // LBM
+        setWeight(""); setMassaMagra(""); setMassaGorda(""); setPercentoGordura(""); setLbmStep("calc");
+    };
 
     // Calculadora de Taxa Metábolica Basal
 
@@ -83,8 +82,8 @@ export default function Main() {
             return;
         }
 
-        const weightFloat = +weight.replace(",",".");
-        const heightFloat = +height.replace(",",".");
+        const weightFloat = parseFloat(weight.replaceAll(",", "."));
+        const heightFloat = parseFloat(height.replaceAll(",", "."));
 
 
         // Cálculo da Taxa Metábólica Basal
@@ -136,7 +135,7 @@ export default function Main() {
         let superavitCalorico = (20/100) * gctResult;
         setCaloriasGanha((gctResult + superavitCalorico).toFixed(2));
         
-        setStep("result")
+        setTmbStep("result")
     }
 
     // Calculadora Água Recomendada
@@ -155,7 +154,7 @@ export default function Main() {
         setAguaMinima(aguaMin.toFixed(2))
         setAguaMaxima(aguaMax.toFixed(2));
 
-        setStep("result")
+        setAguaStep("result")
     };
 
     // Calculadora de Indice de Massa de Magra
@@ -196,12 +195,16 @@ export default function Main() {
         let percentoGordura = (massaGorda / weightFloat) * 100;
         setPercentoGordura(percentoGordura.toFixed(2));
 
-        setStep("result");
+        setLbmStep("result");
     }
     
 
     // MODAL
-    const [step, setStep] = useState("calc"); // 'calc' ou 'result'
+    // const [step, setStep] = useState("calc"); // 'calc' ou 'result'
+    const [imcStep, setImcStep] = useState("calc");
+    const [tmbStep, setTmbStep] = useState("calc");
+    const [aguaStep, setAguaStep] = useState("calc");
+    const [lbmStep, setLbmStep] = useState("calc");
 
     const [openDialog, setOpenDialog] = useState(null); // valores: "imc", "tmb", null
 
@@ -212,6 +215,8 @@ export default function Main() {
     const handleClose = () => {
         setOpenDialog(null);
     };
+
+    
 
     return (
         <section className="main-container">
@@ -244,7 +249,7 @@ export default function Main() {
 
                     <Dialog open={openDialog === "imc"} size={"md"} handler={handleClose} 
                     >
-                        {step === "calc" ? (
+                        {imcStep === "calc" ? (
                             <ImcCalc calcImc={calcImc} />
                         ) : (
                             <ImcTable
@@ -282,7 +287,7 @@ export default function Main() {
 
                     <Dialog open={openDialog === "tmb"} size={"md"} handler={handleClose}
                     >
-                        {step === "calc" ? (
+                        {tmbStep === "calc" ? (
                             <TmbCalc calcTmb={calcTmb} />
                         ) : (
                             <TmbTable
@@ -321,7 +326,7 @@ export default function Main() {
                     
                     <Dialog open={openDialog === "agua"} size={"md"} handler={handleClose}
                     >
-                        {step === "calc" ? (
+                        {aguaStep === "calc" ? (
                             <AguaCalc calcAgua={calcAgua}/>
                         ) : (
                             <AguaTable
@@ -352,13 +357,13 @@ export default function Main() {
                         }
                     >
                         <Button onClick={() => handleOpen("lbm")} className="calculadoras-btn">
-                            índice de Massa Magra
+                            Massa Magra
                         </Button>   
                     </Tooltip>
 
                     <Dialog open={openDialog === "lbm"} size={"md"} handler={handleClose}
                     >
-                        {step === "calc" ? (
+                        {lbmStep === "calc" ? (
                             <LbmCalc calcLbm={calcLbm}/>
                         ) : (
                             <LbmTable
