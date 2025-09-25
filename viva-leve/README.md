@@ -1,12 +1,66 @@
-# React + Vite
+# 🌱 Viva Leve
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bem-vindo ao **Viva Leve**, um site voltado para o **bem-estar e saúde**.  
+Nosso objetivo é oferecer ferramentas práticas e acessíveis para ajudar as pessoas a monitorarem seus indicadores de saúde de forma simples e rápida.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚡ Funcionalidades
 
-## Expanding the ESLint configuration
+O **Viva Leve** conta com diversas **calculadoras saudáveis**:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **IMC (Índice de Massa Corporal)**  
+  Avalie se o seu peso está adequado para a sua altura.
+
+- **TMB (Taxa Metabólica Basal)**  
+  Descubra quantas calorias seu corpo consome em repouso.
+
+- **Água Recomendada**  
+  Calcule a quantidade ideal de água que você deve ingerir diariamente.
+
+- **Massa Magra**  
+  Estime a quantidade de massa magra do seu corpo.
+
+---
+
+## 🖥️ Tecnologias Utilizadas
+
+O projeto foi desenvolvido utilizando:
+
+- **JavaScript (ES6+)** → lógica e cálculos das ferramentas  
+- **React.js** → construção da interface e componentes  
+- **Tailwind CSS** → estilização rápida, responsiva e moderna  
+- **Git & GitHub** → versionamento e colaboração  
+
+---
+
+## 🚀 Como Executar o Projeto
+
+### 🔧 Pré-requisitos
+- [Node.js](https://nodejs.org/) instalado (versão LTS recomendada)  
+- Gerenciador de pacotes **npm** ou **yarn**
+
+### ▶️ Passos para rodar o projeto
+
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/viva-leve.git
+
+2. Acesse a pasta do projeto:
+
+    cd viva-leve
+
+
+3. Instale as dependências:
+
+npm install
+
+
+4. Inicie o servidor de desenvolvimento:
+
+npm run dev
+
+
+5. Acesse no navegador:
+
+http://localhost:5173

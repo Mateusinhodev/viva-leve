@@ -114,14 +114,27 @@
 
 /* Responsivo */
 @media (max-width: 600px) {
+    #result-container h3 {
+        display: none;
+    }
+
     .table-header, .table-data {
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
         gap: 4px;
+        display: none;
     }
 
     .table-header h4, .table-data p {
         margin: 2px 0;
+        display: none;
+    }
+
+    .note {display: none;}
+
+    .table-header, 
+    .table-data {
+        border-bottom: none;
     }
 }
