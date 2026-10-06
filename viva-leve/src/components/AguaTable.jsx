@@ -1,62 +1,89 @@
-import "./AguaTable.css";
-import Button from "./Button";
+import r from "./Resultado.module.css";
+
+const ML_POR_COPO = 250;
+
+// Peso de cada turno na distribuição (proporcional às horas acordado)
+const TURNOS = [
+  { nome: "Manhã", periodo: "ao acordar até 12h", horas: 4 },
+  { nome: "Tarde", periodo: "12h às 18h", horas: 4 },
+  { nome: "Noite", periodo: "18h até dormir", horas: 3 },
+];
+
+const TOTAL_HORAS = TURNOS.reduce((soma, t) => soma + t.horas, 0);
+
+// 2.45 -> "2,5" (uma casa: ninguém mede 2,45 L)
+const litros = (valor) =>
+  valor.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+// 891 -> "900" (arredonda de 50 em 50 ml, mais fácil de medir)
+const ml = (valor) => (Math.round(valor / 50) * 50).toLocaleString("pt-BR");
+
+// Mostra "4 copos" ou "3 a 4 copos"
+const copos = (minMl, maxMl) => {
+  const min = Math.round(minMl / ML_POR_COPO);
+  const max = Math.round(maxMl / ML_POR_COPO);
+  const plural = max === 1 ? "copo" : "copos";
+  return min === max ? `${max} ${plural}` : `${min} a ${max} ${plural}`;
+};
 
 const AguaTable = ({ aguaMinima, aguaMaxima, resetCalc }) => {
-  const turnos = [
-    { nome: "Manhã", horas: 4 },  // acordar até 12h
-    { nome: "Tarde", horas: 4 },  // 12h até 18h
-    { nome: "Noite", horas: 3 },  // 18h até antes de dormir
-  ];
-
-  const totalPartes = turnos.reduce((acc, t) => acc + t.horas, 0);
-
-  // Calcula a distribuição de água em cada turno
-  const distribuicao = turnos.map((turno) => {
-    const porcaoMin = ((aguaMinima * 1000 * turno.horas) / totalPartes).toFixed(0);
-    const porcaoMax = ((aguaMaxima * 1000 * turno.horas) / totalPartes).toFixed(0);
-    return { ...turno, porcaoMin, porcaoMax };
+  const distribuicao = TURNOS.map((turno) => {
+    const fracao = turno.horas / TOTAL_HORAS;
+    return {
+      ...turno,
+      minMl: aguaMinima * 1000 * fracao,
+      maxMl: aguaMaxima * 1000 * fracao,
+    };
   });
 
   return (
-    <div id="result-container">
-      <h2>💧 Consumo Diário de Água</h2>
+    <div className={r.panel}>
+      <p className={r.label}>Sua meta diária de água</p>
+      <p className={r.number}>
+        {litros(aguaMinima)} – {litros(aguaMaxima)}{" "}
+        <span className={r.numberUnit}>litros</span>
+      </p>
+      <p className={r.info}>
+        Cerca de <strong>{copos(aguaMinima * 1000, aguaMaxima * 1000)}</strong>{" "}
+        de {ML_POR_COPO} ml por dia, considerando 35 a 40 ml por kg.
+      </p>
 
-      <div id="agua-number">
-        <p>
-          <strong>Mínimo:</strong> <span className="highlight">{aguaMinima} L/dia</span>
-        </p>
-        <p>
-          <strong>Máximo:</strong> <span className="highlight">{aguaMaxima} L/dia</span>
-        </p>
-      </div>
+      <h3 className={r.subtitle}>Como distribuir ao longo do dia</h3>
+      <p className={r.subtitleHint}>Beber aos poucos é melhor do que tudo de uma vez</p>
 
-      <h3>📊 Distribuição sugerida ao longo do dia</h3>
-
-      <table className="agua-table">
+      <table className={r.table}>
+        <caption className="sr-only">Quantidade de água sugerida por turno do dia</caption>
         <thead>
           <tr>
-            <th>Turno</th>
-            <th>Quantidade sugerida</th>
+            <th scope="col">Turno</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Copos</th>
           </tr>
         </thead>
         <tbody>
-          {distribuicao.map((turno, index) => (
-            <tr key={index}>
-              <td>{turno.nome}</td>
-              <td>
-                {Number(turno.porcaoMin).toLocaleString()} ml –{" "}
-                {Number(turno.porcaoMax).toLocaleString()} ml
+          {distribuicao.map((t) => (
+            <tr key={t.nome}>
+              <th scope="row">
+                {t.nome}
+                <span className={r.cellHint}>{t.periodo}</span>
+              </th>
+              <td className={r.value}>
+                {ml(t.minMl)} – {ml(t.maxMl)} ml
               </td>
+              <td>{copos(t.minMl, t.maxMl)}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <p className="note">
-        *Esses valores são estimativas. Ajuste conforme sua rotina, clima e nível de atividade física.
+      <p className={r.note}>
+        Aumente em dias quentes ou com exercício. Quem tem problemas renais ou
+        cardíacos deve seguir a orientação do médico sobre quantidade de líquidos.
       </p>
 
-      <Button id="back-btn" text="Voltar" action={resetCalc} />
+      <button type="button" className={r.btn} onClick={resetCalc}>
+        Calcular novamente
+      </button>
     </div>
   );
 };

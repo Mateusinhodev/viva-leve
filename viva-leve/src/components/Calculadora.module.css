@@ -1,0 +1,234 @@
+/*
+  Estilos compartilhados pelos FORMULÁRIOS das calculadoras.
+  É um CSS Module: as classes só valem onde o arquivo é importado,
+  então uma calculadora nunca sobrescreve o visual de outra.
+*/
+
+.panel {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  background-color: var(--color-white);
+  border-radius: 16px;
+  color: var(--color-text-primary);
+  text-align: left;
+}
+
+.title {
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.intro {
+  margin: 0.35rem 0 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Dois campos lado a lado */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+  border: 0; /* também é usado em <fieldset> */
+}
+
+.label {
+  padding: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+/* <legend> não respeita o gap do flex */
+legend.label {
+  margin-bottom: 0.4rem;
+}
+
+.unit {
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+/* ========================= */
+/* Inputs e selects          */
+/* ========================= */
+.input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font: inherit;
+  font-size: 1rem; /* 16px evita o zoom automático do iPhone ao focar */
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-surface-light);
+  border-radius: 10px;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input::placeholder {
+  color: #94a3b8;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background-color: var(--color-white);
+  box-shadow: 0 0 0 4px rgb(59 69 84 / 0.12);
+}
+
+/* Select com seta própria (a padrão muda em cada navegador) */
+select.input {
+  appearance: none;
+  padding-right: 2.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  cursor: pointer;
+}
+
+/* ========================= */
+/* Opções em botões (radio)  */
+/* ========================= */
+.segmented {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.option {
+  position: relative;
+}
+
+/* O radio fica invisível por cima do botão: continua clicável e acessível */
+.option input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.option span {
+  display: block;
+  padding: 0.8rem 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-surface-light);
+  border-radius: 10px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.option input:hover + span {
+  border-color: var(--color-text-secondary);
+}
+
+.option input:checked + span {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.option input:focus-visible + span {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ========================= */
+/* Botões                    */
+/* ========================= */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Calcular é a ação principal, fica maior */
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.btnPrimary,
+.btnSecondary {
+  padding: 0.85rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btnSecondary {
+  background-color: var(--color-surface-light);
+  color: var(--color-text-primary);
+}
+
+.btnSecondary:hover:not(:disabled) {
+  background-color: #cbd5e1;
+}
+
+.btnPrimary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.btnPrimary:disabled,
+.btnSecondary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btnPrimary:focus-visible,
+.btnSecondary:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ========================= */
+/* Responsivo                */
+/* ========================= */
+@media (max-width: 480px) {
+  .row,
+  .actions {
+    grid-template-columns: 1fr;
+  }
+
+  /* No celular, a ação principal vem primeiro */
+  .btnPrimary {
+    order: -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .input,
+  .option span,
+  .btnPrimary,
+  .btnSecondary {
+    transition: none;
+  }
+
+  .btnPrimary:hover:not(:disabled) {
+    transform: none;
+  }
+}

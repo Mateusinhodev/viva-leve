@@ -1,0 +1,45 @@
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100svh - var(--header-height) - 6rem);
+  font-family: inherit; /* herda a Lato do site */
+}
+
+/* Cores ligadas às variáveis do index.css */
+.primary {
+  fill: var(--color-text-primary);
+}
+
+.muted {
+  fill: var(--color-text-secondary);
+}
+
+.successText {
+  fill: var(--color-success-dark);
+}
+
+.success {
+  fill: var(--color-success);
+}
+
+.successLight {
+  fill: var(--color-success-light);
+}
+
+.surface {
+  fill: var(--color-white);
+  stroke: var(--color-surface-light);
+}
+
+.track {
+  fill: var(--color-surface-light);
+}
+
+.pointer {
+  stroke: var(--color-primary);
+}
+
+.successStroke {
+  stroke: var(--color-success);
+}

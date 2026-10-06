@@ -1,26 +1,26 @@
-import { useState } from 'react'
-
-// import ImcCalc from './components/ImcCalc'
-// import ImcTable from './components/ImcTable'
-
-import './App.css'
-import Header from "./components/Header.jsx"
-import Home from "./pages/Home/index.jsx"
-import Main from "./pages/Main/index.jsx"
-import Artigo from "./pages/Artigos/index.jsx"
+import Header from "./components/Header.jsx";
+import Home from "./pages/Home/Home.jsx";
+import Main from "./pages/Main/Main.jsx";
+import Progresso from "./pages/Progresso/Progresso.jsx";
+import Artigo from "./pages/Artigos/Artigos.jsx";
+import Footer from "./pages/Footer/Footer.jsx";
 
 function App() {
-
   return (
     <>
-      <div id='container'>
-        <Header/>
-        <Home/>
-        <Main/>
-        <Artigo/>
-      </div>
+      <Header />
+
+      <main>
+        <Home />
+
+        <Main />
+        <Progresso />
+        <Artigo />
+      </main>
+
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

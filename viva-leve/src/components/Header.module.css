@@ -1,0 +1,53 @@
+.inner {
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em; /* em: o espaço cresce junto com o texto */
+  font-size: clamp(1.6rem, 1rem + 2vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Proporcional ao texto: acompanha o clamp() do logo em qualquer tela */
+.logoIcon {
+  width: 0.95em;
+  height: 0.95em;
+  flex-shrink: 0;
+}
+
+.cta {
+  padding: clamp(0.45rem, 1vw, 0.6rem) clamp(0.8rem, 2vw, 1.1rem);
+  border-radius: 8px;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: clamp(0.8rem, 0.75rem + 0.3vw, 1rem);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.cta:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.logo:focus-visible,
+.cta:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition: none;
+  }
+}

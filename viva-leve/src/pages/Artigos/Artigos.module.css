@@ -1,0 +1,132 @@
+/* Largura e padding lateral vêm da classe global .container */
+.artigos {
+  padding-block: clamp(1rem, 3vw, 2rem) clamp(3rem, 6vw, 5rem);
+}
+
+/* ========================= */
+/* Cabeçalho da seção        */
+/* ========================= */
+.header {
+  max-width: 60ch;
+  margin: 0 auto clamp(1.75rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+/* ========================= */
+/* Grade de cards            */
+/* ========================= */
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-surface-light);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgb(15 23 42 / 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-text-secondary);
+  box-shadow: 0 10px 24px rgb(15 23 42 / 0.1);
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background-color: var(--color-surface-light); /* aparece enquanto a imagem carrega */
+  transition: transform 0.4s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.03);
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.tag {
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background-color: var(--color-success-light);
+  color: var(--color-success-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+.source {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* margin-top: auto empurra o "Ler artigo" para a base: alinhado em todos os cards */
+.cta {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.card:hover .cta {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .image {
+    transition: none;
+  }
+
+  .card:hover,
+  .card:hover .image {
+    transform: none;
+  }
+}

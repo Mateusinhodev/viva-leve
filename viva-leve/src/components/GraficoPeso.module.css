@@ -1,0 +1,117 @@
+/* Ocupa o espaço que sobrar no painel (mínimo 280px) */
+.wrapper {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  min-height: 280px;
+}
+
+/* Absoluto: o SVG nunca empurra o tamanho do painel, só ocupa o que foi medido */
+.svg {
+  position: absolute;
+  inset: 0 auto auto 0;
+  display: block;
+  overflow: visible;
+  touch-action: pan-y; /* deixa rolar a página no celular enquanto toca o gráfico */
+  cursor: crosshair;
+}
+
+.svg:focus {
+  outline: none;
+}
+
+.svg:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* Grade: fina, sólida e discreta */
+.grid {
+  stroke: var(--color-surface-light);
+  stroke-width: 1;
+}
+
+.tick {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  fill: var(--color-text-secondary);
+}
+
+/* Linha da meta: tracejada para não ser confundida com a grade */
+.meta {
+  stroke: var(--color-success);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 5;
+}
+
+.metaLabel {
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--color-success-dark);
+}
+
+.area {
+  fill: var(--color-primary);
+  opacity: 0.1;
+}
+
+.line {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* Bolinha com anel branco: legível mesmo sobre a linha */
+.dot {
+  fill: var(--color-primary);
+  stroke: var(--color-white);
+  stroke-width: 2;
+}
+
+.endLabel {
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--color-text-primary);
+}
+
+.crosshair {
+  stroke: #94a3b8;
+  stroke-width: 1;
+}
+
+/* ========================= */
+/* Tooltip                   */
+/* ========================= */
+.tooltip {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 14px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+  pointer-events: none;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgb(15 23 42 / 0.2);
+}
+
+.tooltipDate {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.tooltipValue {
+  font-size: 1rem;
+}
+
+.tooltipDelta {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}

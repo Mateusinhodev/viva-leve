@@ -1,0 +1,43 @@
+/* Barra de composição corporal (só a calculadora de massa magra usa) */
+.bar {
+  display: flex;
+  width: 100%;
+  height: 2.5rem;
+  margin-top: 1rem;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--color-surface-light);
+}
+
+.segment {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* Fina linha branca separando os dois segmentos */
+.segment + .segment {
+  border-left: 2px solid var(--color-white);
+}
+
+.magra {
+  background-color: var(--color-primary);
+}
+
+.gorda {
+  background-color: #94a3b8;
+}
+
+/* Bolinha de legenda na tabela */
+.dot {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  vertical-align: 0.05em;
+}

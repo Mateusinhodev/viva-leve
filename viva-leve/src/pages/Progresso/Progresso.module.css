@@ -1,0 +1,288 @@
+/* Largura e padding lateral vêm da classe global .container */
+.progresso {
+  padding-block: clamp(1rem, 3vw, 2rem) clamp(3rem, 6vw, 5rem);
+  /* compensa a altura do header ao chegar pelo link #progresso */
+  scroll-margin-top: 1rem;
+}
+
+/* ========================= */
+/* Cabeçalho                 */
+/* ========================= */
+.header {
+  max-width: 60ch;
+  margin: 0 auto clamp(1.75rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+/* ========================= */
+/* Resumo (3 números)        */
+/* ========================= */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-surface-light);
+  border-radius: 16px;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.statValue {
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 2rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+/* Variação na direção da meta */
+.positivo {
+  color: var(--color-success-dark);
+}
+
+.statHint {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.metaForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.metaInput {
+  width: 7rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.metaBtn {
+  align-self: flex-start;
+  margin-top: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: none;
+  border: 2px dashed var(--color-surface-light);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.metaBtn:hover {
+  border-color: var(--color-text-secondary);
+}
+
+/* ========================= */
+/* Painéis                   */
+/* ========================= */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-areas:
+    "form    chart"
+    "history chart";
+  align-items: start;
+  gap: 1.5rem;
+}
+
+.layoutVazio {
+  grid-template-areas: "form chart";
+}
+
+.areaForm {
+  grid-area: form;
+}
+
+/* No CSS compartilhado o botão principal sobe no celular; aqui ele fica após os campos */
+.areaForm button[type="submit"] {
+  order: 0;
+}
+
+.areaChart {
+  grid-area: chart;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.areaHistory {
+  grid-area: history;
+}
+
+.panel {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-surface-light);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgb(15 23 42 / 0.05);
+}
+
+.panelTitle {
+  margin-bottom: 1rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.erro {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #b91c1c;
+}
+
+.aviso {
+  min-height: 1.25rem; /* reserva o espaço: a mensagem não empurra o layout */
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-success-dark);
+}
+
+/* ========================= */
+/* Gráfico vazio             */
+/* ========================= */
+.vazio {
+  display: grid;
+  place-content: center;
+  gap: 0.5rem;
+  min-height: 240px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 2px dashed var(--color-surface-light);
+  border-radius: 12px;
+}
+
+.vazioTitulo {
+  font-weight: 800;
+}
+
+.vazioTexto {
+  max-width: 40ch;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+/* ========================= */
+/* Histórico                 */
+/* ========================= */
+.lista {
+  list-style: none;
+  margin-bottom: 0.75rem;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--color-surface-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.item:first-child {
+  border-top: none;
+}
+
+.itemData {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.itemPeso {
+  font-weight: 700;
+}
+
+.itemDelta {
+  min-width: 4.5rem;
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.excluir {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.excluir:hover {
+  color: #b91c1c;
+  background-color: #fee2e2;
+}
+
+.desfazer {
+  margin-bottom: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.875rem;
+  background-color: var(--color-surface);
+  border-radius: 10px;
+}
+
+/* Botão com cara de link */
+.linkBtn {
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.linkBtn:focus-visible,
+.excluir:focus-visible,
+.metaBtn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ========================= */
+/* Responsivo                */
+/* ========================= */
+@media (max-width: 900px) {
+  .layout,
+  .layoutVazio {
+    grid-template-columns: minmax(0, 1fr); /* minmax(0,...) impede o conteúdo de alargar a coluna */
+    grid-template-areas:
+      "form"
+      "chart"
+      "history";
+  }
+}
