@@ -5,11 +5,6 @@
 
 Site de saúde com calculadoras e acompanhamento de peso, feito com React.
 Calcule seu IMC, taxa metabólica basal, água recomendada e massa magra, e registre seu peso para ver sua evolução em um gráfico. Grátis e sem cadastro.
-
-**🔗 Acesse:** [viva-leve.vercel.app](https://viva-leve.vercel.app) <!-- troque pelo endereço real depois do deploy -->
-
-![Viva Leve: painel com IMC, evolução do peso e consumo de água](public/og-image.png)
-
 ---
 
 ## Funcionalidades
